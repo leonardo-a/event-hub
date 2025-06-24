@@ -1,0 +1,78 @@
+@baseUrl = http://localhost:3333
+@authToken = {{authenticate.response.body.access_token}}
+
+# @name create_account
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "fullName": "Leonardo Leal",
+  "email": "leonardoa.dev@gmail.com",
+  "password": "123456"
+}
+###
+
+# @name create_admin_account
+POST {{baseUrl}}/admins
+Content-Type: application/json
+
+{
+  "fullName": "Leonardo Leal",
+  "email": "leonardoa.dev1@gmail.com",
+  "password": "123456"
+}
+###
+
+# @name authenticate
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
+  "email": "leonardoa.dev1@gmail.com",
+  "password": "123456"
+}
+
+###
+
+###
+
+# @name fetch_users
+GET {{baseUrl}}/users?page=1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+###
+
+# @name get_profile
+GET {{baseUrl}}/profile
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+###
+
+# @name edit_user
+PUT {{baseUrl}}/users/9efae184-20c3-4865-b840-c92419ec66c6
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "fullName": "Leonardo Antão",
+  "email": "leolealantao@gmail.com",
+  "password": "123456"
+}
+
+###
+
+###
+
+# @name delete_user
+DELETE  {{baseUrl}}/users/9efae184-20c3-4865-b840-c92419ec66c6
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+

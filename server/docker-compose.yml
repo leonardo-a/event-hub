@@ -1,0 +1,46 @@
+services:
+  database:
+    container_name: events-hub-db
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: events-hub
+      PGDATA: /data/postgres
+    volumes:
+      - ./data/pg:/data/postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 20s
+      timeout: 3s
+      retries: 3
+    profiles:
+      - dev
+  api:
+    container_name: events-hub-api
+    build: .
+    ports:
+      - 3333:3333
+    depends_on:
+      database: 
+        condition: service_healthy
+        required: false
+      cache:
+        condition: service_started
+    profiles:
+      - dev
+      - prod
+  cache:
+    container_name: events-hub-cache
+    image: bitnami/redis
+    ports:
+      - 6379:6379
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./data/redis:/data
+    profiles:
+      - dev
+      - prod
