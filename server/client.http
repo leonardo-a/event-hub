@@ -55,7 +55,7 @@ Authorization: Bearer {{authToken}}
 ###
 
 # @name edit_user
-PUT {{baseUrl}}/users/9efae184-20c3-4865-b840-c92419ec66c6
+PUT {{baseUrl}}/users/5babf984-e46b-47ad-ac77-d83e97b4da3d
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 

@@ -20,6 +20,7 @@ services:
       - dev
   api:
     container_name: events-hub-api
+    image: events-hub-api:0.1
     build: .
     ports:
       - 3333:3333
