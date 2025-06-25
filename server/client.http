@@ -6,8 +6,8 @@ POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
-  "fullName": "Leonardo Leal",
-  "email": "leonardoa.dev@gmail.com",
+  "fullName": "John Doe",
+  "email": "johndoe@eventshub.com",
   "password": "123456"
 }
 ###
@@ -54,14 +54,23 @@ Authorization: Bearer {{authToken}}
 
 ###
 
+# @name get_user
+GET {{baseUrl}}/users/5babf984-e46b-47ad-ac77-d83e97b4da3d
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+###
+
 # @name edit_user
-PUT {{baseUrl}}/users/5babf984-e46b-47ad-ac77-d83e97b4da3d
+PUT {{baseUrl}}/users/45810656-b5a1-4874-aa70-da3b07672dbe
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "fullName": "Leonardo Antão",
-  "email": "leolealantao@gmail.com",
+  "fullName": "Jane Doe",
+  "email": "janedoe@eventshub.com",
   "password": "123456"
 }
 

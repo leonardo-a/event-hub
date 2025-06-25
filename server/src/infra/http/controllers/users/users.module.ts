@@ -14,6 +14,7 @@ import { DeleteUserController } from "./routes/delete-user.controller"
 import { EditUserController } from "./routes/edit-user.controller"
 import { FetchUsersController } from "./routes/fetch-users.controller"
 import { GetProfileController } from "./routes/get-profile.controller"
+import { GetUserController } from "./routes/get-user.controller"
 import { RegisterAsAdminController } from "./routes/register-as-admin.controller"
 import { RegisterAsUserController } from "./routes/register-as-user.controller"
 
@@ -25,6 +26,7 @@ import { RegisterAsUserController } from "./routes/register-as-user.controller"
 		AuthenticateController,
 		FetchUsersController,
 		GetProfileController,
+		GetUserController,
 		EditUserController,
 		DeleteUserController,
 	],

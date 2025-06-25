@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common"
 
 import { type Either, left, right } from "@/core/either"
 import { ResourceNotFoundError } from "@/core/errors/errors/resource-not-found-error"
+import { User } from "../../enterprise/entities/user"
 import { HashGenerator } from "../cryptography/hash-generator"
 import { UsersRepository } from "../repositories/users-repository"
 import { UserAlreadyExistsError } from "./errors/user-already-exists-error"
@@ -37,9 +38,13 @@ export class EditUserUseCase {
 			return left(new ResourceNotFoundError())
 		}
 
-		const userWithEmail = await this.usersRepository.findByEmail(email)
+		let userWithSameEmail: User | null = null
 
-		if (userWithEmail) {
+		if (user.email !== email) {
+			userWithSameEmail = await this.usersRepository.findByEmail(email)
+		}
+
+		if (userWithSameEmail) {
 			return left(new UserAlreadyExistsError(email))
 		}
 
